@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "food-ordering-mobile",
+    "slug": "food-ordering-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light"
+  }
+}
