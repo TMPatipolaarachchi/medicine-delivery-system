@@ -32,14 +32,14 @@ export default function AppNavigator() {
     >
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Explore' }} />
-      <Stack.Screen name="FoodList" component={FoodListScreen} options={{ title: 'Menu' }} />
+      <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Medicines' }} />
+      <Stack.Screen name="FoodList" component={FoodListScreen} options={{ title: 'Medicine List' }} />
       <Stack.Screen name="Cart" component={CartScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="AdminCategory" component={AdminCategoryScreen} options={{ title: 'Admin Categories' }} />
-      <Stack.Screen name="AdminFood" component={AdminFoodScreen} options={{ title: 'Manage Foods' }} />
+      <Stack.Screen name="AdminFood" component={AdminFoodScreen} options={{ title: 'Manage Medicines' }} />
     </Stack.Navigator>
   );
 }

@@ -16,7 +16,7 @@ export default function PaymentScreen({ route, navigation }) {
         paymentMethod: method,
         paymentResult: { id: 'pi_demo12345', status: 'success' },
       });
-      Alert.alert('Success', `Order processed with ${method}`);
+      Alert.alert('Success', `Medicine order processed with ${method}`);
       navigation.popToTop();
     } catch (error) {
       Alert.alert('Payment Failed', error.response?.data?.message || 'Bank error occurred');
@@ -29,7 +29,7 @@ export default function PaymentScreen({ route, navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.title}>Payment</Text>
-        <Text style={styles.sub}>Choose a method to complete your order securely.</Text>
+        <Text style={styles.sub}>Choose a method to complete your medicine order securely.</Text>
 
         {loading ? (
           <ActivityIndicator size="large" color={ui.colors.primary} style={styles.loader} />

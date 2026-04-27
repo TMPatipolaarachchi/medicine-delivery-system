@@ -23,9 +23,9 @@ export default function CartScreen({ navigation }) {
     }
   };
 
-  const removeItem = async (foodId) => {
+  const removeItem = async (medicineId) => {
     try {
-      await apiClient.delete(`/cart/${foodId}`);
+      await apiClient.delete(`/cart/${medicineId}`);
       fetchCart();
     } catch (error) {
       Alert.alert('Error', 'Failed to remove');
@@ -42,29 +42,33 @@ export default function CartScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={cart.items}
-        keyExtractor={(item) => item.food._id}
+        keyExtractor={(item, index) => item.food?._id || item.medicine?._id || `${index}`}
         contentContainerStyle={styles.listWrap}
-        ListHeaderComponent={<Text style={styles.heading}>Your Cart</Text>}
-        renderItem={({ item }) => (
+        ListHeaderComponent={<Text style={styles.heading}>Your Medicine Cart</Text>}
+        renderItem={({ item }) => {
+          const medicine = item.food || item.medicine;
+
+          return (
           <View style={styles.card}>
-            {item.food?.image ? (
-              <Image source={{ uri: getFullImageUrl(item.food.image) }} style={styles.thumbnail} />
+            {medicine?.image ? (
+              <Image source={{ uri: getFullImageUrl(medicine.image) }} style={styles.thumbnail} />
             ) : (
               <View style={styles.thumbnailPlaceholder}>
-                <Ionicons name="fast-food-outline" size={20} color={ui.colors.mutedText} />
+                <Ionicons name="medkit-outline" size={20} color={ui.colors.mutedText} />
               </View>
             )}
             <View style={styles.info}>
-              <Text style={styles.name}>{item.food?.name}</Text>
+              <Text style={styles.name}>{medicine?.name}</Text>
               <Text style={styles.qty}>Qty x{item.quantity}</Text>
               <Text style={styles.price}>${Number(item.price).toFixed(2)}</Text>
             </View>
-            <Pressable onPress={() => removeItem(item.food._id)} style={styles.removeBtn}>
+            <Pressable onPress={() => medicine?._id && removeItem(medicine._id)} style={styles.removeBtn}>
               <Ionicons name="trash-outline" size={18} color="#fff" />
             </Pressable>
           </View>
-        )}
-        ListEmptyComponent={<Text style={styles.empty}>Your cart is empty</Text>}
+          );
+        }}
+        ListEmptyComponent={<Text style={styles.empty}>Your medicine cart is empty</Text>}
       />
 
       <View style={styles.footer}>

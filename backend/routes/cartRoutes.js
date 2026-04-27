@@ -7,7 +7,7 @@ router.route('/')
     .get(protect, getCart)
     .post(protect, addToCart);
 
-router.route('/:foodId')
+router.route('/:itemId')
     .put(protect, updateCartItem)
     .delete(protect, removeFromCart);
 

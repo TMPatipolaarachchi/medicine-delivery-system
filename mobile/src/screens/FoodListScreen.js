@@ -6,25 +6,25 @@ import { screenPadding, ui } from '../theme/ui';
 
 export default function FoodListScreen({ route }) {
   const { categoryId } = route.params;
-  const [foods, setFoods] = useState([]);
+  const [medicines, setMedicines] = useState([]);
 
   useEffect(() => {
-    fetchFoods();
+    fetchMedicines();
   }, [categoryId]);
 
-  const fetchFoods = async () => {
+  const fetchMedicines = async () => {
     try {
-      const { data } = await apiClient.get(`/foods/category/${categoryId}`);
-      setFoods(data);
+      const { data } = await apiClient.get(`/medicines/category/${categoryId}`);
+      setMedicines(data);
     } catch (error) {
-      Alert.alert('Error', 'Error fetching foods');
+      Alert.alert('Error', 'Error fetching medicines');
     }
   };
 
-  const addToCart = async (foodId, price) => {
+  const addToCart = async (medicineId, price) => {
     try {
-      await apiClient.post('/cart', { foodId, quantity: 1, price });
-      Alert.alert('Success', 'Added to cart');
+      await apiClient.post('/cart', { medicineId, quantity: 1, price });
+      Alert.alert('Success', 'Medicine added to cart');
     } catch (error) {
       Alert.alert('Error', 'Failed to add to cart');
     }
@@ -39,10 +39,10 @@ export default function FoodListScreen({ route }) {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={foods}
+        data={medicines}
         keyExtractor={(item) => item._id}
         contentContainerStyle={styles.listWrap}
-        ListHeaderComponent={<Text style={styles.heading}>Pick your meal</Text>}
+        ListHeaderComponent={<Text style={styles.heading}>Pick your medicine</Text>}
         renderItem={({ item }) => (
           <View style={styles.card}>
             {item.image ? (

@@ -34,7 +34,7 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.headerWrap}>
           <Text style={styles.eyebrow}>WELCOME BACK</Text>
           <Text style={styles.title}>Sign In To Continue</Text>
-          <Text style={styles.subtitle}>Fresh meals, faster checkout, better tracking.</Text>
+          <Text style={styles.subtitle}>Trusted medicines, faster checkout, better tracking.</Text>
         </View>
 
         <View style={styles.card}>

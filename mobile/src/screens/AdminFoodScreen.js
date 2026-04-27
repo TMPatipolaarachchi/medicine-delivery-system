@@ -7,7 +7,7 @@ import { screenPadding, ui } from '../theme/ui';
 
 export default function AdminFoodScreen({ route }) {
   const { categoryId, categoryName } = route.params;
-  const [foods, setFoods] = useState([]);
+  const [medicines, setMedicines] = useState([]);
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -15,14 +15,14 @@ export default function AdminFoodScreen({ route }) {
   const [imageUri, setImageUri] = useState('');
   const [editId, setEditId] = useState(null);
 
-  useEffect(() => { fetchFoods(); }, []);
+  useEffect(() => { fetchMedicines(); }, []);
 
-  const fetchFoods = async () => {
+  const fetchMedicines = async () => {
     try {
-      const { data } = await apiClient.get(`/foods/category/${categoryId}`);
-      setFoods(data);
+      const { data } = await apiClient.get(`/medicines/category/${categoryId}`);
+      setMedicines(data);
     } catch (e) {
-      Alert.alert('Error', 'Failed to load foods');
+      Alert.alert('Error', 'Failed to load medicines');
     }
   };
 
@@ -70,33 +70,33 @@ export default function AdminFoodScreen({ route }) {
     try {
       const payload = { name, description, price: Number(price), category: categoryId, image: uploadedImageUrl };
       if (editId) {
-        await apiClient.put(`/foods/${editId}`, payload);
+        await apiClient.put(`/medicines/${editId}`, payload);
       } else {
-        await apiClient.post('/foods', payload);
+        await apiClient.post('/medicines', payload);
       }
       setName('');
       setDescription('');
       setPrice('');
       setImageUri('');
       setEditId(null);
-      fetchFoods();
+      fetchMedicines();
     } catch (e) {
       Alert.alert('Error', e.response?.data?.message || 'Must be an admin');
     }
   };
 
-  const handleEdit = (food) => {
-    setName(food.name);
-    setDescription(food.description);
-    setPrice(food.price.toString());
-    setImageUri(food.image || '');
-    setEditId(food._id);
+  const handleEdit = (medicine) => {
+    setName(medicine.name);
+    setDescription(medicine.description);
+    setPrice(medicine.price.toString());
+    setImageUri(medicine.image || '');
+    setEditId(medicine._id);
   };
 
   const handleDelete = async (id) => {
     try {
-      await apiClient.delete(`/foods/${id}`);
-      fetchFoods();
+      await apiClient.delete(`/medicines/${id}`);
+      fetchMedicines();
     } catch (e) {
       Alert.alert('Error', 'Failed to delete');
     }
@@ -111,14 +111,14 @@ export default function AdminFoodScreen({ route }) {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={foods}
+        data={medicines}
         keyExtractor={(item) => item._id}
         contentContainerStyle={styles.content}
         ListHeaderComponent={
           <>
-            <Text style={styles.heading}>{editId ? 'Edit Food Item' : `Add Food to ${categoryName}`}</Text>
+            <Text style={styles.heading}>{editId ? 'Edit Medicine Item' : `Add Medicine to ${categoryName}`}</Text>
 
-            <TextInput style={styles.input} placeholder="Food Name" value={name} onChangeText={setName} />
+            <TextInput style={styles.input} placeholder="Medicine Name" value={name} onChangeText={setName} />
             <TextInput style={styles.input} placeholder="Description" value={description} onChangeText={setDescription} />
             <TextInput style={styles.input} placeholder="Price (e.g. 5.99)" value={price} onChangeText={setPrice} keyboardType="numeric" />
 
@@ -131,7 +131,7 @@ export default function AdminFoodScreen({ route }) {
             </View>
 
             <Pressable style={styles.primaryBtn} onPress={handleSubmit}>
-              <Text style={styles.primaryBtnText}>{editId ? 'Update Food' : 'Create Food'}</Text>
+              <Text style={styles.primaryBtnText}>{editId ? 'Update Medicine' : 'Create Medicine'}</Text>
             </Pressable>
 
             {editId ? (
@@ -140,7 +140,7 @@ export default function AdminFoodScreen({ route }) {
               </Pressable>
             ) : null}
 
-            <Text style={styles.subHeading}>All Foods</Text>
+            <Text style={styles.subHeading}>All Medicines</Text>
           </>
         }
         renderItem={({ item }) => (
@@ -148,7 +148,7 @@ export default function AdminFoodScreen({ route }) {
             {item.image ? (
               <Image source={{ uri: getFullImageUrl(item.image) }} style={styles.thumbnail} />
             ) : (
-              <View style={styles.thumbFallback}><Ionicons name="fast-food-outline" size={18} color={ui.colors.mutedText} /></View>
+              <View style={styles.thumbFallback}><Ionicons name="medkit-outline" size={18} color={ui.colors.mutedText} /></View>
             )}
             <View style={styles.cardInfo}>
               <Text style={styles.name}>{item.name}</Text>

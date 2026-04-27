@@ -32,7 +32,7 @@ export default function CheckoutScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.heading}>Delivery Details</Text>
+        <Text style={styles.heading}>Medicine Delivery Details</Text>
 
         <View style={styles.inputWrap}>
           <Ionicons name="location-outline" size={18} color={ui.colors.mutedText} />
@@ -56,7 +56,7 @@ export default function CheckoutScreen({ route, navigation }) {
 
         <View style={styles.summaryCard}>
           <Text style={styles.summaryTitle}>Order Summary</Text>
-          <View style={styles.rowBetween}><Text style={styles.summaryTxt}>Subtotal</Text><Text style={styles.summaryPrice}>${totalPrice.toFixed(2)}</Text></View>
+          <View style={styles.rowBetween}><Text style={styles.summaryTxt}>Medicines Subtotal</Text><Text style={styles.summaryPrice}>${totalPrice.toFixed(2)}</Text></View>
           <View style={styles.rowBetween}><Text style={styles.summaryTxt}>Shipping</Text><Text style={styles.summaryPrice}>$5.00</Text></View>
           <View style={[styles.rowBetween, styles.totalRow]}>
             <Text style={styles.totalLabel}>Total</Text>

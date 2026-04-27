@@ -6,7 +6,7 @@ import { screenPadding, ui } from '../theme/ui';
 
 export default function HomeScreen({ navigation }) {
   const [categories, setCategories] = useState([]);
-  const [foodsByCategory, setFoodsByCategory] = useState({});
+  const [medicinesByCategory, setMedicinesByCategory] = useState({});
 
   useEffect(() => {
     fetchHomeData();
@@ -16,19 +16,19 @@ export default function HomeScreen({ navigation }) {
     try {
       const [{ data: categoryData }, { data: foodData }] = await Promise.all([
         apiClient.get('/categories'),
-        apiClient.get('/foods'),
+        apiClient.get('/medicines'),
       ]);
 
-      const groupedFoods = foodData.reduce((acc, food) => {
-        const categoryId = food.category?._id || food.category;
+      const groupedMedicines = foodData.reduce((acc, medicine) => {
+        const categoryId = medicine.category?._id || medicine.category;
         if (!categoryId) return acc;
         if (!acc[categoryId]) acc[categoryId] = [];
-        acc[categoryId].push(food);
+        acc[categoryId].push(medicine);
         return acc;
       }, {});
 
       setCategories(categoryData);
-      setFoodsByCategory(groupedFoods);
+      setMedicinesByCategory(groupedMedicines);
     } catch (error) {
       console.log('Error fetching home data');
     }
@@ -59,8 +59,8 @@ export default function HomeScreen({ navigation }) {
             </View>
 
             <View style={styles.heroCard}>
-              <Text style={styles.heroTitle}>Discover Your{`\n`}Favorite Flavors</Text>
-              <Text style={styles.heroSub}>Explore curated categories and order in minutes.</Text>
+              <Text style={styles.heroTitle}>Get Essential{`\n`}Medicines Fast</Text>
+              <Text style={styles.heroSub}>Browse trusted categories and order your medicine in minutes.</Text>
             </View>
 
             <Text style={styles.sectionTitle}>Popular Categories</Text>
@@ -73,7 +73,7 @@ export default function HomeScreen({ navigation }) {
               <Image source={{ uri: getFullImageUrl(item.image) }} style={styles.heroImage} />
             ) : (
               <View style={styles.imagePlaceholder}>
-                <Ionicons name="restaurant-outline" size={24} color={ui.colors.mutedText} />
+                <Ionicons name="medkit-outline" size={24} color={ui.colors.mutedText} />
               </View>
             )}
             <View style={styles.cardContent}>
@@ -85,15 +85,15 @@ export default function HomeScreen({ navigation }) {
                 </Pressable>
               </View>
 
-              {foodsByCategory[item._id]?.length ? (
-                foodsByCategory[item._id].map((food) => (
-                  <View key={food._id} style={styles.foodRow}>
-                    <Text style={styles.foodName} numberOfLines={1}>{food.name}</Text>
-                    <Text style={styles.foodPrice}>${Number(food.price).toFixed(2)}</Text>
+              {medicinesByCategory[item._id]?.length ? (
+                medicinesByCategory[item._id].map((medicine) => (
+                  <View key={medicine._id} style={styles.foodRow}>
+                    <Text style={styles.foodName} numberOfLines={1}>{medicine.name}</Text>
+                    <Text style={styles.foodPrice}>${Number(medicine.price).toFixed(2)}</Text>
                   </View>
                 ))
               ) : (
-                <Text style={styles.emptyFoods}>No foods in this category yet.</Text>
+                <Text style={styles.emptyFoods}>No medicines in this category yet.</Text>
               )}
             </View>
           </Pressable>

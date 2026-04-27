@@ -1,7 +1,7 @@
-# Food Ordering Backend README
+# Medicine Ordering Backend README
 
 ## Introduction
-This is the backend API for a Food Ordering System, built using Node.js, Express, MongoDB, and Mongoose. It uses JWT for authentication and includes full functionality for User, Admin, Category, Food Menu, Shopping Cart, and Orders with Payments.
+This is the backend API for a Medicine Ordering System, built using Node.js, Express, MongoDB, and Mongoose. It uses JWT for authentication and includes full functionality for User, Admin, Category, Medicine Catalog, Shopping Cart, and Orders with Payments.
 
 ## Stack
 - Node.js
@@ -30,17 +30,18 @@ This is the backend API for a Food Ordering System, built using Node.js, Express
 - `PUT /api/categories/:id` - Update a category (Private/Admin)
 - `DELETE /api/categories/:id` - Delete a category (Private/Admin)
 
-### Foods
-- `GET /api/foods` - Fetch all food items
-- `POST /api/foods` - Create a new food item (Private/Admin)
-- `PUT /api/foods/:id` - Update a food item (Private/Admin)
-- `DELETE /api/foods/:id` - Delete a food item (Private/Admin)
+### Medicines
+- `GET /api/medicines` - Fetch all medicine items
+- `POST /api/medicines` - Create a new medicine item (Private/Admin)
+- `PUT /api/medicines/:id` - Update a medicine item (Private/Admin)
+- `DELETE /api/medicines/:id` - Delete a medicine item (Private/Admin)
+- `GET /api/foods` - Backward-compatible alias for legacy clients
 
 ### Cart
 - `GET /api/cart` - Get user's cart (Private)
 - `POST /api/cart` - Add an item to the cart (Private)
-- `PUT /api/cart/:foodId` - Update an item quantity in the cart (Private)
-- `DELETE /api/cart/:foodId` - Remove an item from the cart (Private)
+- `PUT /api/cart/:itemId` - Update an item quantity in the cart (Private)
+- `DELETE /api/cart/:itemId` - Remove an item from the cart (Private)
 
 ### Orders & Payments
 - `POST /api/orders` - Place an order (Private)

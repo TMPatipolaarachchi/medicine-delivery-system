@@ -29,7 +29,7 @@ const getFoodsByCategory = async (categoryId) => {
 const updateFood = async (id, data) => {
     const food = await Food.findById(id);
     if (!food) {
-        throw new Error('Food not found');
+        throw new Error('Medicine not found');
     }
 
     if (data.name) food.name = data.name;
@@ -45,11 +45,11 @@ const updateFood = async (id, data) => {
 const deleteFood = async (id) => {
     const food = await Food.findById(id);
     if (!food) {
-        throw new Error('Food not found');
+        throw new Error('Medicine not found');
     }
 
     await food.deleteOne();
-    return { message: 'Food item removed' };
+    return { message: 'Medicine item removed' };
 };
 
 module.exports = {

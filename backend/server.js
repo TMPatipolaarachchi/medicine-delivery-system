@@ -52,6 +52,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/foods', foodRoutes);
+app.use('/api/medicines', foodRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payments', paymentRoutes);
@@ -62,7 +63,7 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Root route
 app.get('/', (req, res) => {
-    res.send('Food Ordering API is running...');
+    res.send('Medicine Ordering API is running...');
 });
 
 // Error handling middleware

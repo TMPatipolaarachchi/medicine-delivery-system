@@ -142,7 +142,7 @@ export default function AdminCategoryScreen({ navigation }) {
             {item.image ? (
               <Image source={{ uri: getFullImageUrl(item.image) }} style={styles.cardImage} />
             ) : (
-              <View style={styles.cardPlaceholder}><Ionicons name="restaurant-outline" size={18} color={ui.colors.mutedText} /></View>
+              <View style={styles.cardPlaceholder}><Ionicons name="medkit-outline" size={18} color={ui.colors.mutedText} /></View>
             )}
 
             <View style={styles.cardBody}>
@@ -150,7 +150,7 @@ export default function AdminCategoryScreen({ navigation }) {
               <Text style={styles.desc} numberOfLines={2}>{item.description}</Text>
               <View style={styles.actionsRow}>
                 <Pressable style={styles.manageBtn} onPress={() => navigation.navigate('AdminFood', { categoryId: item._id, categoryName: item.name })}>
-                  <Text style={styles.manageBtnText}>Manage Foods</Text>
+                  <Text style={styles.manageBtnText}>Manage Medicines</Text>
                 </Pressable>
                 <Pressable style={styles.smallBtn} onPress={() => handleEdit(item)}><Text style={styles.smallBtnText}>Edit</Text></Pressable>
                 <Pressable style={[styles.smallBtn, styles.deleteBtn]} onPress={() => handleDelete(item._id)}><Text style={[styles.smallBtnText, styles.deleteText]}>Del</Text></Pressable>

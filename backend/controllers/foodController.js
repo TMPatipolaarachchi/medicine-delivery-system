@@ -1,23 +1,23 @@
 const foodService = require('../services/foodService');
 
-// @desc    Get all food items
-// @route   GET /api/foods
+// @desc    Get all medicine items
+// @route   GET /api/medicines
 // @access  Public
 const getFoods = async (req, res) => {
     const foods = await foodService.getAllFoods();
     res.json(foods);
 };
 
-// @desc    Get food by category
-// @route   GET /api/foods/category/:categoryId
+// @desc    Get medicines by category
+// @route   GET /api/medicines/category/:categoryId
 // @access  Public
 const getFoodsByCategory = async (req, res) => {
     const foods = await foodService.getFoodsByCategory(req.params.categoryId);
     res.json(foods);
 };
 
-// @desc    Create a food item
-// @route   POST /api/foods
+// @desc    Create a medicine item
+// @route   POST /api/medicines
 // @access  Private/Admin
 const createFood = async (req, res) => {
     try {
@@ -29,8 +29,8 @@ const createFood = async (req, res) => {
     }
 };
 
-// @desc    Update a food item
-// @route   PUT /api/foods/:id
+// @desc    Update a medicine item
+// @route   PUT /api/medicines/:id
 // @access  Private/Admin
 const updateFood = async (req, res) => {
     try {
@@ -42,8 +42,8 @@ const updateFood = async (req, res) => {
     }
 };
 
-// @desc    Delete a food item
-// @route   DELETE /api/foods/:id
+// @desc    Delete a medicine item
+// @route   DELETE /api/medicines/:id
 // @access  Private/Admin
 const deleteFood = async (req, res) => {
     try {

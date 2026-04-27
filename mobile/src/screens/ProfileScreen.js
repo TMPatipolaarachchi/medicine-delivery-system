@@ -63,7 +63,7 @@ export default function ProfileScreen({ navigation }) {
 
         {role === 'admin' && (
           <Pressable style={styles.adminBtn} onPress={() => navigation.navigate('AdminCategory')}>
-            <Text style={styles.adminBtnText}>Manage Categories and Foods</Text>
+            <Text style={styles.adminBtnText}>Manage Categories and Medicines</Text>
           </Pressable>
         )}
 
