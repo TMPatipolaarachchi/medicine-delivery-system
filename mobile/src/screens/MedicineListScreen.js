@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import apiClient from '../api/apiClient';
 import { screenPadding, ui } from '../theme/ui';
 
-export default function FoodListScreen({ route }) {
+export default function MedicineListScreen({ route }) {
   const { categoryId } = route.params;
   const [medicines, setMedicines] = useState([]);
 
@@ -42,14 +42,14 @@ export default function FoodListScreen({ route }) {
         data={medicines}
         keyExtractor={(item) => item._id}
         contentContainerStyle={styles.listWrap}
-        ListHeaderComponent={<Text style={styles.heading}>Pick your medicine</Text>}
+        ListHeaderComponent={<Text style={styles.heading}>Available Medicines</Text>}
         renderItem={({ item }) => (
           <View style={styles.card}>
             {item.image ? (
               <Image source={{ uri: getFullImageUrl(item.image) }} style={styles.thumbnail} />
             ) : (
               <View style={styles.thumbnailPlaceholder}>
-                <Ionicons name="image-outline" size={20} color={ui.colors.mutedText} />
+                <Ionicons name="medkit-outline" size={20} color={ui.colors.mutedText} />
               </View>
             )}
 
@@ -61,7 +61,7 @@ export default function FoodListScreen({ route }) {
 
             <Pressable style={styles.addBtn} onPress={() => addToCart(item._id, item.price)}>
               <Ionicons name="add" size={18} color="#fff" />
-              <Text style={styles.addText}>Add</Text>
+              <Text style={styles.addText}>Add Rx</Text>
             </Pressable>
           </View>
         )}

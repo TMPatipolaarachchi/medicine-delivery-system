@@ -8,12 +8,12 @@ export default function App() {
       theme={{
         dark: false,
         colors: {
-          primary: '#0f766e',
-          background: '#f4f7fb',
+          primary: '#0b7285',
+          background: '#eef5f9',
           card: '#ffffff',
-          text: '#1f2937',
-          border: '#e5e7eb',
-          notification: '#ea580c',
+          text: '#102a43',
+          border: '#d9e2ec',
+          notification: '#2f9e44',
         },
       }}
     >

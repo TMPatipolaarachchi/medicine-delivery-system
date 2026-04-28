@@ -28,8 +28,8 @@ export default function PaymentScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
-        <Text style={styles.title}>Payment</Text>
-        <Text style={styles.sub}>Choose a method to complete your medicine order securely.</Text>
+        <Text style={styles.title}>Secure Payment</Text>
+        <Text style={styles.sub}>Choose how you want to pay for your medicines.</Text>
 
         {loading ? (
           <ActivityIndicator size="large" color={ui.colors.primary} style={styles.loader} />
@@ -37,7 +37,7 @@ export default function PaymentScreen({ route, navigation }) {
           <View style={styles.optionWrap}>
             <Pressable style={styles.optionBtn} onPress={() => processPayment('Card')}>
               <Ionicons name="card-outline" size={18} color="#fff" />
-              <Text style={styles.optionText}>Credit / Debit Card</Text>
+              <Text style={styles.optionText}>Card Payment</Text>
             </Pressable>
 
             <Pressable style={[styles.optionBtn, styles.cashBtn]} onPress={() => processPayment('Cash')}>

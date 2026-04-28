@@ -44,7 +44,7 @@ export default function CartScreen({ navigation }) {
         data={cart.items}
         keyExtractor={(item, index) => item.food?._id || item.medicine?._id || `${index}`}
         contentContainerStyle={styles.listWrap}
-        ListHeaderComponent={<Text style={styles.heading}>Your Medicine Cart</Text>}
+        ListHeaderComponent={<Text style={styles.heading}>Prescription Cart</Text>}
         renderItem={({ item }) => {
           const medicine = item.food || item.medicine;
 
@@ -59,7 +59,7 @@ export default function CartScreen({ navigation }) {
             )}
             <View style={styles.info}>
               <Text style={styles.name}>{medicine?.name}</Text>
-              <Text style={styles.qty}>Qty x{item.quantity}</Text>
+              <Text style={styles.qty}>Pack x{item.quantity}</Text>
               <Text style={styles.price}>${Number(item.price).toFixed(2)}</Text>
             </View>
             <Pressable onPress={() => medicine?._id && removeItem(medicine._id)} style={styles.removeBtn}>
@@ -68,12 +68,12 @@ export default function CartScreen({ navigation }) {
           </View>
           );
         }}
-        ListEmptyComponent={<Text style={styles.empty}>Your medicine cart is empty</Text>}
+        ListEmptyComponent={<Text style={styles.empty}>Your prescription cart is empty</Text>}
       />
 
       <View style={styles.footer}>
         <View>
-          <Text style={styles.footerLabel}>Total</Text>
+          <Text style={styles.footerLabel}>Payable</Text>
           <Text style={styles.total}>${Number(cart.totalPrice).toFixed(2)}</Text>
         </View>
         <Pressable
@@ -81,7 +81,7 @@ export default function CartScreen({ navigation }) {
           onPress={() => navigation.navigate('Checkout', { totalPrice: cart.totalPrice })}
           style={[styles.checkoutBtn, cart.items.length === 0 && styles.checkoutBtnDisabled]}
         >
-          <Text style={styles.checkoutText}>Checkout</Text>
+          <Text style={styles.checkoutText}>Place Order</Text>
         </Pressable>
       </View>
     </SafeAreaView>

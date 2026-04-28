@@ -14,12 +14,12 @@ export default function HomeScreen({ navigation }) {
 
   const fetchHomeData = async () => {
     try {
-      const [{ data: categoryData }, { data: foodData }] = await Promise.all([
+      const [{ data: categoryData }, { data: medicineData }] = await Promise.all([
         apiClient.get('/categories'),
         apiClient.get('/medicines'),
       ]);
 
-      const groupedMedicines = foodData.reduce((acc, medicine) => {
+      const groupedMedicines = medicineData.reduce((acc, medicine) => {
         const categoryId = medicine.category?._id || medicine.category;
         if (!categoryId) return acc;
         if (!acc[categoryId]) acc[categoryId] = [];
@@ -54,21 +54,21 @@ export default function HomeScreen({ navigation }) {
               </Pressable>
               <Pressable style={styles.iconBtn} onPress={() => navigation.navigate('Cart')}>
                 <Ionicons name="bag-handle-outline" size={20} color={ui.colors.primary} />
-                <Text style={styles.iconBtnText}>Cart</Text>
+                <Text style={styles.iconBtnText}>Orders</Text>
               </Pressable>
             </View>
 
             <View style={styles.heroCard}>
-              <Text style={styles.heroTitle}>Get Essential{`\n`}Medicines Fast</Text>
-              <Text style={styles.heroSub}>Browse trusted categories and order your medicine in minutes.</Text>
+              <Text style={styles.heroTitle}>Trusted Pharmacy{`\n`}At Your Door</Text>
+              <Text style={styles.heroSub}>Discover categories, compare medicines, and order safely from home.</Text>
             </View>
 
-            <Text style={styles.sectionTitle}>Popular Categories</Text>
+            <Text style={styles.sectionTitle}>Medicine Categories</Text>
           </>
         }
         contentContainerStyle={styles.listWrap}
         renderItem={({ item }) => (
-          <Pressable style={styles.card} onPress={() => navigation.navigate('FoodList', { categoryId: item._id })}>
+          <Pressable style={styles.card} onPress={() => navigation.navigate('MedicineList', { categoryId: item._id })}>
             {item.image ? (
               <Image source={{ uri: getFullImageUrl(item.image) }} style={styles.heroImage} />
             ) : (
@@ -79,21 +79,21 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.cardContent}>
               <View style={styles.cardHeaderRow}>
                 <Text style={styles.cardText}>{item.name}</Text>
-                <Pressable style={styles.viewAllBtn} onPress={() => navigation.navigate('FoodList', { categoryId: item._id })}>
-                  <Text style={styles.viewAllText}>View all</Text>
+                <Pressable style={styles.viewAllBtn} onPress={() => navigation.navigate('MedicineList', { categoryId: item._id })}>
+                  <Text style={styles.viewAllText}>Open</Text>
                   <Ionicons name="arrow-forward" size={14} color={ui.colors.primary} />
                 </Pressable>
               </View>
 
               {medicinesByCategory[item._id]?.length ? (
                 medicinesByCategory[item._id].map((medicine) => (
-                  <View key={medicine._id} style={styles.foodRow}>
-                    <Text style={styles.foodName} numberOfLines={1}>{medicine.name}</Text>
-                    <Text style={styles.foodPrice}>${Number(medicine.price).toFixed(2)}</Text>
+                  <View key={medicine._id} style={styles.medicineRow}>
+                    <Text style={styles.medicineName} numberOfLines={1}>{medicine.name}</Text>
+                    <Text style={styles.medicinePrice}>${Number(medicine.price).toFixed(2)}</Text>
                   </View>
                 ))
               ) : (
-                <Text style={styles.emptyFoods}>No medicines in this category yet.</Text>
+                <Text style={styles.emptyMedicines}>No medicines listed yet.</Text>
               )}
             </View>
           </Pressable>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   heroCard: {
     borderRadius: ui.radius.lg,
     padding: 22,
-    backgroundColor: '#0f766e',
+    backgroundColor: '#0b7285',
     marginBottom: 20,
     ...ui.shadow.card,
   },
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   heroSub: {
-    color: '#dcfce7',
+    color: '#d8f3f7',
     fontSize: 15,
     marginTop: 8,
     lineHeight: 22,
@@ -196,30 +196,30 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: ui.colors.primary,
   },
-  foodRow: {
+  medicineRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#f3fbfd',
     borderWidth: 1,
     borderColor: ui.colors.border,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 8,
   },
-  foodName: {
+  medicineName: {
     flex: 1,
     marginRight: 8,
     fontSize: 14,
     color: ui.colors.text,
     fontWeight: '600',
   },
-  foodPrice: {
+  medicinePrice: {
     fontSize: 14,
     color: ui.colors.accent,
     fontWeight: '800',
   },
-  emptyFoods: {
+  emptyMedicines: {
     fontSize: 13,
     color: ui.colors.mutedText,
     fontStyle: 'italic',

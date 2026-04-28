@@ -111,10 +111,10 @@ export default function AdminCategoryScreen({ navigation }) {
         contentContainerStyle={styles.content}
         ListHeaderComponent={
           <>
-            <Text style={styles.heading}>{editId ? 'Edit Category' : 'Create Category'}</Text>
+            <Text style={styles.heading}>{editId ? 'Edit Medicine Category' : 'Create Medicine Category'}</Text>
 
             <TextInput style={styles.input} placeholder="Category Name" value={name} onChangeText={setName} />
-            <TextInput style={styles.input} placeholder="Description" value={description} onChangeText={setDescription} />
+            <TextInput style={styles.input} placeholder="Category Notes" value={description} onChangeText={setDescription} />
 
             <View style={styles.imageRow}>
               <Pressable style={styles.imageBtn} onPress={pickImage}>
@@ -134,7 +134,7 @@ export default function AdminCategoryScreen({ navigation }) {
               </Pressable>
             ) : null}
 
-            <Text style={styles.subHeading}>All Categories</Text>
+            <Text style={styles.subHeading}>All Medicine Categories</Text>
           </>
         }
         renderItem={({ item }) => (
@@ -149,8 +149,8 @@ export default function AdminCategoryScreen({ navigation }) {
               <Text style={styles.name}>{item.name}</Text>
               <Text style={styles.desc} numberOfLines={2}>{item.description}</Text>
               <View style={styles.actionsRow}>
-                <Pressable style={styles.manageBtn} onPress={() => navigation.navigate('AdminFood', { categoryId: item._id, categoryName: item.name })}>
-                  <Text style={styles.manageBtnText}>Manage Medicines</Text>
+                <Pressable style={styles.manageBtn} onPress={() => navigation.navigate('AdminMedicine', { categoryId: item._id, categoryName: item.name })}>
+                  <Text style={styles.manageBtnText}>Open Catalog</Text>
                 </Pressable>
                 <Pressable style={styles.smallBtn} onPress={() => handleEdit(item)}><Text style={styles.smallBtnText}>Edit</Text></Pressable>
                 <Pressable style={[styles.smallBtn, styles.deleteBtn]} onPress={() => handleDelete(item._id)}><Text style={[styles.smallBtnText, styles.deleteText]}>Del</Text></Pressable>

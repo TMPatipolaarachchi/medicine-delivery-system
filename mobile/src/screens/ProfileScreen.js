@@ -49,21 +49,21 @@ export default function ProfileScreen({ navigation }) {
           </View>
         </View>
 
-        <Text style={styles.title}>Account Settings</Text>
+        <Text style={styles.title}>Patient Profile</Text>
 
-        <Text style={styles.label}>Full Name</Text>
+        <Text style={styles.label}>Patient Name</Text>
         <TextInput style={styles.input} value={name} onChangeText={setName} />
 
         <Text style={styles.label}>Email Address</Text>
         <TextInput style={styles.input} value={email} onChangeText={setEmail} autoCapitalize="none" />
 
         <Pressable style={styles.primaryBtn} onPress={handleUpdate}>
-          <Text style={styles.primaryBtnText}>Save Changes</Text>
+          <Text style={styles.primaryBtnText}>Save Profile</Text>
         </Pressable>
 
         {role === 'admin' && (
           <Pressable style={styles.adminBtn} onPress={() => navigation.navigate('AdminCategory')}>
-            <Text style={styles.adminBtnText}>Manage Categories and Medicines</Text>
+            <Text style={styles.adminBtnText}>Open Pharmacy Admin</Text>
           </Pressable>
         )}
 

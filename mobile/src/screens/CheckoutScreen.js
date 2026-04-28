@@ -32,7 +32,7 @@ export default function CheckoutScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.heading}>Medicine Delivery Details</Text>
+        <Text style={styles.heading}>Delivery and Contact Details</Text>
 
         <View style={styles.inputWrap}>
           <Ionicons name="location-outline" size={18} color={ui.colors.mutedText} />
@@ -55,9 +55,9 @@ export default function CheckoutScreen({ route, navigation }) {
         </View>
 
         <View style={styles.summaryCard}>
-          <Text style={styles.summaryTitle}>Order Summary</Text>
+          <Text style={styles.summaryTitle}>Prescription Summary</Text>
           <View style={styles.rowBetween}><Text style={styles.summaryTxt}>Medicines Subtotal</Text><Text style={styles.summaryPrice}>${totalPrice.toFixed(2)}</Text></View>
-          <View style={styles.rowBetween}><Text style={styles.summaryTxt}>Shipping</Text><Text style={styles.summaryPrice}>$5.00</Text></View>
+          <View style={styles.rowBetween}><Text style={styles.summaryTxt}>Handling and Delivery</Text><Text style={styles.summaryPrice}>$5.00</Text></View>
           <View style={[styles.rowBetween, styles.totalRow]}>
             <Text style={styles.totalLabel}>Total</Text>
             <Text style={styles.totalValue}>${(totalPrice + 5).toFixed(2)}</Text>
@@ -65,7 +65,7 @@ export default function CheckoutScreen({ route, navigation }) {
         </View>
 
         <Pressable style={styles.payBtn} onPress={handleCheckout}>
-          <Text style={styles.payBtnText}>Continue to Payment</Text>
+          <Text style={styles.payBtnText}>Review Payment</Text>
         </Pressable>
       </ScrollView>
     </SafeAreaView>

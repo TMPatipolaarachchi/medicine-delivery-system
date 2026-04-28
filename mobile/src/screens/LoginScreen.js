@@ -32,9 +32,9 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.heroBlobB} />
 
         <View style={styles.headerWrap}>
-          <Text style={styles.eyebrow}>WELCOME BACK</Text>
-          <Text style={styles.title}>Sign In To Continue</Text>
-          <Text style={styles.subtitle}>Trusted medicines, faster checkout, better tracking.</Text>
+          <Text style={styles.eyebrow}>DIGITAL PHARMACY</Text>
+          <Text style={styles.title}>Sign In To Your Care App</Text>
+          <Text style={styles.subtitle}>Order medicines, manage deliveries, and track every prescription.</Text>
         </View>
 
         <View style={styles.card}>
@@ -78,14 +78,14 @@ export default function LoginScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#f4f7fb' },
+  safeArea: { flex: 1, backgroundColor: '#eef5f9' },
   keyboardWrap: { flex: 1, justifyContent: 'center', paddingHorizontal: screenPadding },
   heroBlobA: {
     position: 'absolute',
     width: 260,
     height: 260,
     borderRadius: 130,
-    backgroundColor: '#ccfbf1',
+    backgroundColor: '#d8f3f7',
     top: -70,
     right: -90,
   },
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     width: 190,
     height: 190,
     borderRadius: 95,
-    backgroundColor: '#ffedd5',
+    backgroundColor: '#dbeafe',
     bottom: -50,
     left: -80,
   },
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   switchBtnText: {
-    color: '#0f766e',
+    color: '#0b7285',
     fontWeight: '600',
   },
 });

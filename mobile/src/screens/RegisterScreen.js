@@ -33,9 +33,9 @@ export default function RegisterScreen({ navigation }) {
         <View style={styles.heroBlobB} />
 
         <View style={styles.headerWrap}>
-          <Text style={styles.eyebrow}>GET STARTED</Text>
-          <Text style={styles.title}>Create New Account</Text>
-          <Text style={styles.subtitle}>Set up your profile and start ordering in seconds.</Text>
+          <Text style={styles.eyebrow}>PATIENT ONBOARDING</Text>
+          <Text style={styles.title}>Create Your Care Account</Text>
+          <Text style={styles.subtitle}>Join the pharmacy app and order essential medicines in minutes.</Text>
         </View>
 
         <View style={styles.card}>
@@ -90,14 +90,14 @@ export default function RegisterScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#f4f7fb' },
+  safeArea: { flex: 1, backgroundColor: '#eef5f9' },
   keyboardWrap: { flex: 1, justifyContent: 'center', paddingHorizontal: screenPadding },
   heroBlobA: {
     position: 'absolute',
     width: 260,
     height: 260,
     borderRadius: 130,
-    backgroundColor: '#dbeafe',
+    backgroundColor: '#e0f2fe',
     top: -70,
     left: -90,
   },
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     width: 210,
     height: 210,
     borderRadius: 105,
-    backgroundColor: '#ffe4e6',
+    backgroundColor: '#dcfce7',
     bottom: -50,
     right: -90,
   },
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   switchBtnText: {
-    color: '#0f766e',
+    color: '#0b7285',
     fontWeight: '600',
   },
 });

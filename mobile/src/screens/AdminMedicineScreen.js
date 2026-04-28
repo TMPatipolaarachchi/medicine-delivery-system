@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import apiClient from '../api/apiClient';
 import { screenPadding, ui } from '../theme/ui';
 
-export default function AdminFoodScreen({ route }) {
+export default function AdminMedicineScreen({ route }) {
   const { categoryId, categoryName } = route.params;
   const [medicines, setMedicines] = useState([]);
 
@@ -59,7 +59,7 @@ export default function AdminFoodScreen({ route }) {
   };
 
   const handleSubmit = async () => {
-    if (!name || !price || !description) return Alert.alert('Validation', 'Missing fields');
+    if (!name || !price || !description) return Alert.alert('Validation', 'Name, price, and details are required');
 
     let uploadedImageUrl = imageUri;
     if (imageUri && !imageUri.startsWith('http') && !imageUri.startsWith('/uploads')) {
@@ -116,10 +116,10 @@ export default function AdminFoodScreen({ route }) {
         contentContainerStyle={styles.content}
         ListHeaderComponent={
           <>
-            <Text style={styles.heading}>{editId ? 'Edit Medicine Item' : `Add Medicine to ${categoryName}`}</Text>
+            <Text style={styles.heading}>{editId ? 'Edit Medicine' : `Add Medicine in ${categoryName}`}</Text>
 
             <TextInput style={styles.input} placeholder="Medicine Name" value={name} onChangeText={setName} />
-            <TextInput style={styles.input} placeholder="Description" value={description} onChangeText={setDescription} />
+            <TextInput style={styles.input} placeholder="Usage / Dosage Details" value={description} onChangeText={setDescription} />
             <TextInput style={styles.input} placeholder="Price (e.g. 5.99)" value={price} onChangeText={setPrice} keyboardType="numeric" />
 
             <View style={styles.imageRow}>
@@ -131,7 +131,7 @@ export default function AdminFoodScreen({ route }) {
             </View>
 
             <Pressable style={styles.primaryBtn} onPress={handleSubmit}>
-              <Text style={styles.primaryBtnText}>{editId ? 'Update Medicine' : 'Create Medicine'}</Text>
+              <Text style={styles.primaryBtnText}>{editId ? 'Save Medicine' : 'Create Medicine'}</Text>
             </Pressable>
 
             {editId ? (
@@ -140,7 +140,7 @@ export default function AdminFoodScreen({ route }) {
               </Pressable>
             ) : null}
 
-            <Text style={styles.subHeading}>All Medicines</Text>
+            <Text style={styles.subHeading}>Category Medicines</Text>
           </>
         }
         renderItem={({ item }) => (
